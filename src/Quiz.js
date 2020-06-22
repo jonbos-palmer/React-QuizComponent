@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import QuizQuestion from "./QuizQuestion";
+import QuizEnd from "./QuizEnd";
 
 let quizData = require("./quiz_data.json");
 
@@ -10,11 +11,19 @@ class Quiz extends Component {
     this.state = { quiz_position: 1 };
   }
   render() {
-    return (
-      <div className="QuizQuestion">
-        <QuizQuestion quiz_question={quizData.quiz_questions[0]} />
-      </div>
-    );
+    const isQuizEnd =
+      this.state.quiz_position - 1 === quizData.quiz_questions.length;
+    let rv = null;
+    if (!isQuizEnd) {
+      rv = (
+        <div className="QuizQuestion">
+          <QuizQuestion quiz_question={quizData.quiz_questions[0]} />
+        </div>
+      );
+    } else {
+      rv = <QuizEnd />;
+    }
+    return rv;
   }
 }
 
