@@ -13,12 +13,19 @@ class QuizQuestion extends Component {
         <section>
           <ul key={this.props.id}>
             {this.props.quiz_question.answer_options.map((option, index) => {
-              return <QuizQuestionButton key={index} button_text={option} />;
+              return (
+                <QuizQuestionButton
+                  onClick={this.handleClick.bind(this)}
+                  key={index}
+                  button_text={option}
+                />
+              );
             })}
           </ul>
         </section>
       </main>
     );
   }
+  handleClick(val) {}
 }
 export default QuizQuestion;

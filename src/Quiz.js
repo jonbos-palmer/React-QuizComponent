@@ -17,13 +17,23 @@ class Quiz extends Component {
     if (!isQuizEnd) {
       rv = (
         <div className="QuizQuestion">
-          <QuizQuestion quiz_question={quizData.quiz_questions[0]} />
+          <QuizQuestion
+            quiz_question={
+              quizData.quiz_questions[this.state.quiz_position - 1]
+            }
+          />
         </div>
       );
     } else {
       rv = <QuizEnd />;
     }
     return rv;
+  }
+  showNextQuestion() {
+    this.setState({
+      ...this.state,
+      quiz_position: this.state.quiz_position + 1,
+    });
   }
 }
 
