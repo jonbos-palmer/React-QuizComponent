@@ -5,7 +5,20 @@ class QuizQuestion extends Component {
     super(props);
   }
   render() {
-    return <div></div>;
+    return (
+      <main>
+        <section>
+          <p>{this.props.quiz_question.instruction_text}</p>
+        </section>
+        <section>
+          <ul>
+            {this.props.quiz_question.answer_options.map((option) => {
+              return <li key={option}>{option}</li>;
+            })}
+          </ul>
+        </section>
+      </main>
+    );
   }
 }
 export default QuizQuestion;
